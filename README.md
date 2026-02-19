@@ -1,7 +1,7 @@
 # 📝 To-Do List Application
 
 ## 📝 Project Overview
-Nowoczesna aplikacja desktopowa typu **To-Do List** zaprojektowana dla systemu Windows. Aplikacja oferuje inteligentne filtrowanie zadań, zarządzanie terminami (deadlines) oraz dynamiczny system powiadomień wizualnych o zaległych zadaniach.
+A modern desktop **To-Do List** application designed for Windows. The application offers intelligent task filtering, deadline management, and a dynamic visual alert system for overdue tasks.
 
 ## 💻 Tech Stack
 <p align="left">
@@ -14,31 +14,30 @@ Nowoczesna aplikacja desktopowa typu **To-Do List** zaprojektowana dla systemu W
 ---
 
 ## 🛠️ Core Features
-- **Task Management:** Pełny cykl CRUD (Create, Read, Update, Delete) z możliwością edycji nazw zadań bezpośrednio na liście.
-- **Filtering System:** Zaawansowany silnik filtrowania łączący wyszukiwanie tekstowe "na żywo" z filtrowaniem według kategorii.
-- **Deadline Monitoring:** System dat końcowych z wizualnym alertem (czerwona czcionka) dla zadań zaległych.
-- **Visual Feedback:** Obsługa statusu wykonania zadania (CheckBox) z efektem przekreślenia tekstu (Strikethrough).
-- **Theme Engine:** Wbudowany system zmiany motywów (Light/Dark Mode) wpływający na całe UI.
+- **Task Management:** Full CRUD (Create, Read, Update, Delete) cycle with the ability to edit task names directly within the list (Inline Editing).
+- **Filtering System:** Advanced filtering engine combining real-time text search with category-based filtering.
+- **Deadline Monitoring:** Due date system with visual alerts (red font) for overdue tasks.
+- **Visual Feedback:** Task completion status support (CheckBox) with a text strikethrough effect.
+- **Theme Engine:** Built-in theme switching system (Light/Dark Mode) affecting the entire UI.
 
 ---
 
 ## 📐 Data Architecture
-System opiera się na reaktywnym przepływie danych, zapewniając płynną synchronizację między logiką a interfejsem użytkownika.
+The system is based on a reactive data flow, ensuring seamless synchronization between the logic and the user interface.
 
 
 
 | Component | Technology | Responsibility |
 | :--- | :--- | :--- |
-| **Data Source** | Local File (`tasks.txt`) | Trwałe przechowywanie danych w formacie tekstowym. |
-| **Collection** | `ObservableCollection` | Dynamiczne odświeżanie widoku po zmianie danych. |
-| **Filtering** | `ICollectionView` | Zarządzanie widocznością elementów bez ich usuwania. |
-| **Notifications** | `INotifyPropertyChanged` | Aktualizacja UI w czasie rzeczywistym po zmianie statusu zadania. |
+| **Data Source** | Local File (`tasks.txt`) | Persistent data storage in text format. |
+| **Collection** | `ObservableCollection` | Dynamic view updates upon data changes. |
+| **Filtering** | `ICollectionView` | Managing element visibility without removing them from the collection. |
+| **Notifications** | `INotifyPropertyChanged` | Real-time UI updates upon task status changes. |
 
 ---
 
 ## 🚀 Key Algorithms
-1. **Hybrid Filtering:** Algorytm filtrujący weryfikuje jednocześnie dwa parametry: czy kategoria zadania odpowiada wybranej w `FilterSelector` oraz czy pole `Name` zawiera frazę wpisaną w `SearchInput`.
-2. **Overdue Detection:** Właściwość obliczana `IsOverdue` sprawdza relację między `DateTime.Now` a `Deadline`. Jeśli zadanie nie jest gotowe i termin minął, system zmienia stan wizualny wiersza na kolor czerwony.
-3. **Inline Persistence:** Każda zmiana (edycja nazwy, zmiana statusu lub dodanie zadania) automatycznie wyzwala proces zapisu danych do pliku lokalnego.
-
+1. **Hybrid Filtering:** The filtering algorithm simultaneously verifies two parameters: whether the task category matches the one selected in `FilterSelector` and if the `Name` field contains the string entered in `SearchInput`.
+2. **Overdue Detection:** The calculated `IsOverdue` property monitors the relationship between `DateTime.Now` and the `Deadline`. If a task is not completed and the deadline has passed, the system changes the row's visual state to red.
+3. **Inline Persistence:** Every change (name edit, status toggle, or task addition) automatically triggers a data synchronization process to the local file.
 
