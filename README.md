@@ -41,3 +41,7 @@ The system is based on a reactive data flow, ensuring seamless synchronization b
 2. **Overdue Detection:** The calculated `IsOverdue` property monitors the relationship between `DateTime.Now` and the `Deadline`. If a task is not completed and the deadline has passed, the system changes the row's visual state to red.
 3. **Inline Persistence:** Every change (name edit, status toggle, or task addition) automatically triggers a data synchronization process to the local file.
 
+---
+Author: jbilewicz
+
+
